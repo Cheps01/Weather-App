@@ -1,0 +1,13 @@
+:root {
+    --black: #272727;
+    --orange: #D4AA7D;
+    --yellow: #EFD09E;
+}
+body {
+    background-color: var(--black);
+    min-height: 100vh;
+    min-width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
