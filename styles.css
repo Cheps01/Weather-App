@@ -11,3 +11,10 @@ body {
     align-items: center;
     justify-content: center;
 }
+.container {
+    display: flex;
+    justify-content: center;
+}
+.card {
+    width: 55vw;
+}

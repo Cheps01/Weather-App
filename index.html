@@ -11,22 +11,26 @@
             <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <h4 class="card-title"><i class="fas fa-cloud"></i> Weather App</h4>
+                        <h4 class="card-title" id="card-title">
+                            <i class="fas fa-cloud-sun"></i> Weather App
+                        </h4>
                         <p class="card-text">Look for the weather in any city</p>
                     </div>
                     <form id="weather-form">
                         <div class="mb-3">
-                            <label for="city-input" class="from-label">City Name </label>
+                            <label for="city-input" class="from-label">City Name</label>
                             <input id="city-input" class="form-control" type="text" placeholder="ej. New York, Dubai" required>
                         </div>
-                        <button id="search-button" type="submit" class="btn btn-primary btn-block">
-                            <i class="fas fa-search"></i> Search Weather
-                        </button>
+                        <div class="text-center">
+                            <button id="search-button" type="button" class="btn btn-outline-primary">
+                                <i class="fas fa-search"></i> Search
+                            </button>
+                        </div>
                     </form>
-                    <div id="search-result">
-                        
-                    </div>
                 </div>
+            </div>
+            <div id="search-result">
+
             </div>
         </div>
         <script src="main.js"></script>
