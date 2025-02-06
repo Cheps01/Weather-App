@@ -13,8 +13,14 @@ body {
 }
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
-.card {
+.search-card {
     width: 55vw;
+}
+.weather-card, .alert {
+    width: 90%;
+    margin: 7px auto 12px;
 }

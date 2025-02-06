@@ -1,6 +1,6 @@
-const btn = document.querySelector("#search-button");
+const button = document.querySelector("#search-button");
 const input = document.querySelector("#city-input");
-const rsltDiv = document.querySelector("#search-result");
+const resultDiv = document.querySelector("#search-result");
 
 async function getWeatherData(city) {
     const apiKey = "16bca1041c60b9213f71fbf7a54da25c";
@@ -15,19 +15,51 @@ async function getWeatherData(city) {
         data.hum = obj.main.humidity;
         console.log(data);
     } catch {
-        alert(`${city} not found`);
+        data.city = city;
         return null;
     }
     return data;
 }
 
-btn.addEventListener("click", () => {
+function insertNewWeatherCard(data) {
+    resultDiv.innerHTML += `<div class="card weather-card">
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <h5 class="card-title">${data.city}, ${data.country}</h5>
+                                        <div class="card-text text-danger">
+                                            <i class="fas fa-temperature-high"></i> ${data.temp}
+                                        </div>
+                                        <div class="card-text text-warning"> 
+                                            <i class="fas fa-sun"></i> ${data.desc}
+                                        </div>
+                                        <div class="card-text text-primary">
+                                            <i class="fas fa-tint"></i> ${data.hum}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+}
+
+function insertNotFound(city) {
+    resultDiv.innerHTML += `<div class="alert alert-warning">
+                                <i class="fas fa-city"></i> ${city} not found
+                            </div>`
+}
+
+button.addEventListener("click", () => {
     const strIn = input.value || null;
     if (strIn != null) {
         const cities = strIn.trim().split(",");
         const weatherData = cities.map(city => {
             return getWeatherData(city);
         })
-
+        weatherData.forEach(cityData => {
+            if (cityData != null) {
+                console.log(cityData);
+                insertNewWeatherCard(cityData);
+            } else {
+                insertNotFound(cityData.city);
+            }
+        })
     }
 })
